@@ -5,17 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:web_scraper"
         mc:Ignorable="d"
-        Title="MainWindow" Height="764" Width="697">
+        Title="MainWindow" Height="792" Width="697">
     <Grid>
-        <Button Content="Scrape" HorizontalAlignment="Center" Margin="0,702,0,0" VerticalAlignment="Top" Width="372" Height="36"/>
-        <RichTextBox Margin="68,22,68,101">
+        <Button Content="Scrape" HorizontalAlignment="Center" Margin="0,712,0,0" VerticalAlignment="Top" Width="372" Height="36" Click="BeginScrape"/>
+        <RichTextBox Margin="68,22,68,127" Name="txt">
             <FlowDocument>
                 <Paragraph>
                     <Run Text="RichTextBox"/>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <ProgressBar HorizontalAlignment="Center" Height="32" Margin="0,665,0,0" VerticalAlignment="Top" Width="560"/>
+        <ProgressBar HorizontalAlignment="Center" Height="32" Margin="0,665,0,0" VerticalAlignment="Top" Width="560" Name="prg"/>
 
     </Grid>
 </Window>
