@@ -1,17 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Net;
 
 //Dependencies
@@ -24,6 +12,7 @@ namespace web_scraper
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -33,20 +22,23 @@ namespace web_scraper
         public void BeginScrape(object sender, RoutedEventArgs e)
         {
             txt.Document.Blocks.Clear();
+            prg.Value = 0;
             var html = @"http://html-agility-pack.net/";
             DownloadWebPage(html);
         }
 
         public void DownloadWebPage(string html)
         {
+            Uri _uri = new Uri(html, UriKind.Absolute);
             using (WebClient wc = new WebClient())
             {
-                Uri _uri = new Uri(html, UriKind.Absolute);
-                wc.DownloadStringCompleted += new DownloadStringCompletedEventHandler(DownloadedWebHandler);
-                wc.DownloadProgressChanged += new DownloadProgressChangedEventHandler(DownloadProgressHandler);
-                wc.DownloadStringAsync(_uri);
+                    wc.Dispose();
+                    wc.DownloadStringAsync(_uri);
+                    wc.DownloadProgressChanged += new DownloadProgressChangedEventHandler(DownloadProgressHandler);
+                    wc.DownloadStringCompleted += new DownloadStringCompletedEventHandler(DownloadedWebHandler);
             }
         }
+
         public void DownloadProgressHandler(Object sender, DownloadProgressChangedEventArgs e)
         {
             prg.Value = e.ProgressPercentage;
@@ -60,10 +52,11 @@ namespace web_scraper
                 HtmlParse(textString);
             }
         }
-        public void HtmlParse(string t) {
+        public void HtmlParse(string t)
+        {
             var html = new HtmlDocument();
             html.LoadHtml(t);
-            txt.AppendText(html.DocumentNode.OuterHtml);    
+            txt.AppendText(html.DocumentNode.OuterHtml);
         }
     }
 }

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="792" Width="697">
     <Grid>
-        <Button Content="Scrape" HorizontalAlignment="Center" Margin="0,712,0,0" VerticalAlignment="Top" Width="372" Height="36" Click="BeginScrape"/>
+        <Button Content="Scrape" HorizontalAlignment="Center" Margin="0,712,0,0" VerticalAlignment="Top" Width="250" Height="36" Click="BeginScrape"/>
         <RichTextBox Margin="68,22,68,127" Name="txt">
             <FlowDocument>
                 <Paragraph>
