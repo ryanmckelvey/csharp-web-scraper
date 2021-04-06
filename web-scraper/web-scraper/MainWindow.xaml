@@ -1,0 +1,21 @@
+﻿<Window x:Class="web_scraper.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:web_scraper"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="764" Width="697">
+    <Grid>
+        <Button Content="Scrape" HorizontalAlignment="Center" Margin="0,702,0,0" VerticalAlignment="Top" Width="372" Height="36"/>
+        <RichTextBox Margin="68,22,68,101">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="RichTextBox"/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <ProgressBar HorizontalAlignment="Center" Height="32" Margin="0,665,0,0" VerticalAlignment="Top" Width="560"/>
+
+    </Grid>
+</Window>
