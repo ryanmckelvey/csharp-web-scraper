@@ -1,0 +1,17 @@
+﻿<Page
+    x:Class="web_scraper_v2.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:web_scraper_v2"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Button Content="Scrape" HorizontalAlignment="Center" Margin="0,914,0,0" VerticalAlignment="Top" Width="250" Height="36" Click="BeginScrape"/>
+        <ProgressBar HorizontalAlignment="Center" Height="32" Margin="0,867,0,0" VerticalAlignment="Top" Width="560" Name="prg"/>
+        <TextBox Name="txt" HorizontalAlignment="Center" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Height="752" Width="560" Margin="0,52,0,0"/>
+
+    </Grid>
+</Page>
