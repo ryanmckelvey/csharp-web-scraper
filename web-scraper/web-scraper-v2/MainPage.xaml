@@ -6,13 +6,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="1032">
 
     <Grid>
-        <Button Content="Scrape" Margin="470,913,0,0" VerticalAlignment="Top" Width="250" Height="36" Click="BeginScrape"/>
+        <Button Content="Scrape" Margin="236,913,0,0" VerticalAlignment="Top" Width="250" Height="36" Click="BeginScrape"/>
         <ProgressBar HorizontalAlignment="Center" Height="32" Margin="0,867,0,0" VerticalAlignment="Top" Width="560" Name="prg"/>
-        <TextBox Name="txt" HorizontalAlignment="Center" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Height="752" Width="560" Margin="0,52,0,0"/>
-        <Button Content="Cancel" Margin="780,913,0,0" VerticalAlignment="Top" Width="250" Height="36" Click="CancelScrape" Name="cancelBtn" IsEnabled="False"/>
+        <TextBox Name="txt" HorizontalAlignment="Center" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Height="752" Width="560" Margin="0,90,0,0"/>
+        <Button Content="Cancel" Margin="546,913,0,0" VerticalAlignment="Top" Width="250" Height="36" Click="CancelScrape" Name="cancelBtn" IsEnabled="False"/>
+        <TextBox Name="url" HorizontalAlignment="Center" Margin="0,32,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="560"/>
 
     </Grid>
 </Page>

@@ -36,7 +36,7 @@ namespace web_scraper_v2
             this.InitializeComponent();
             backgroundWorker1.WorkerReportsProgress = true;
             backgroundWorker1.WorkerSupportsCancellation = true;
-            backgroundWorker1.DoWork += new DoWorkEventHandler(DownloadWebPage);
+            backgroundWorker1.DoWork += new DoWorkEventHandler(DownloadWebPageAsync);
         }
         //Main scraping function here
         public void BeginScrape(object sender, RoutedEventArgs e)
@@ -44,23 +44,38 @@ namespace web_scraper_v2
             txt.Text = "";
             prg.Value = 0;
             cancelBtn.IsEnabled = true;
-            backgroundWorker1.RunWorkerAsync();
+            if (url.Text != "")
+            {
+                var html = (url.Text);
+                backgroundWorker1.RunWorkerAsync(argument: html);
+            }
         }
 
-        public void DownloadWebPage(object sender, System.EventArgs e)
+        public async void DownloadWebPageAsync(object sender, DoWorkEventArgs e)
         {
-            var html = @"http://html-agility-pack.net/";
-            Uri _uri = new Uri(html, UriKind.Absolute);
-            using (WebClient wc = new WebClient())
+            
+            try
             {
-                wc.Dispose();
-                wc.DownloadStringAsync(_uri);
-                wc.DownloadProgressChanged += new DownloadProgressChangedEventHandler(DownloadProgressHandlerAsync);
-                if (backgroundWorker1.CancellationPending != true)
+                Uri _uri = new Uri(e.Argument.ToString(), UriKind.Absolute);
+                using (WebClient wc = new WebClient())
                 {
-                    wc.DownloadStringCompleted += new DownloadStringCompletedEventHandler(DownloadedWebHandler);
+                    wc.Dispose();
+                    wc.DownloadStringAsync(_uri);
+                    wc.DownloadProgressChanged += new DownloadProgressChangedEventHandler(DownloadProgressHandlerAsync);
+                    if (backgroundWorker1.CancellationPending != true)
+                    {
+                        wc.DownloadStringCompleted += new DownloadStringCompletedEventHandler(DownloadedWebHandler);
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                {
+                    txt.Text = ex.Message;
+                });
+            }
+
         }
 
         public async void CancelScrape(object sender, RoutedEventArgs e)
@@ -86,14 +101,14 @@ namespace web_scraper_v2
 
         public void DownloadedWebHandler(Object sender, DownloadStringCompletedEventArgs e)
         {
-            if (!e.Cancelled && e.Error == null)
+            if (!backgroundWorker1.CancellationPending)
             {
                 string textString = (string)e.Result;
                 HtmlParse(textString);
             }
             else
             {
-                HtmlParse("Error");
+                HtmlParse("Cancelled");
             }
         }
         public async void HtmlParse(string t)
@@ -104,7 +119,7 @@ namespace web_scraper_v2
             {
                 txt.Text = html.DocumentNode.OuterHtml;
             });
-            
+
         }
     }
 }
