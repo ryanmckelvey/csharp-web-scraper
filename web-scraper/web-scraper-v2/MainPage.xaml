@@ -9,9 +9,10 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Button Content="Scrape" HorizontalAlignment="Center" Margin="0,914,0,0" VerticalAlignment="Top" Width="250" Height="36" Click="BeginScrape"/>
+        <Button Content="Scrape" Margin="470,913,0,0" VerticalAlignment="Top" Width="250" Height="36" Click="BeginScrape"/>
         <ProgressBar HorizontalAlignment="Center" Height="32" Margin="0,867,0,0" VerticalAlignment="Top" Width="560" Name="prg"/>
         <TextBox Name="txt" HorizontalAlignment="Center" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Height="752" Width="560" Margin="0,52,0,0"/>
+        <Button Content="Cancel" Margin="780,913,0,0" VerticalAlignment="Top" Width="250" Height="36" Click="CancelScrape" Name="cancelBtn" IsEnabled="False"/>
 
     </Grid>
 </Page>
